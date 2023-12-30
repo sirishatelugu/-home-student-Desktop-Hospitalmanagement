@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>APPOINTMENT FORM</title>
+    
+</head>
+    <body>
+<form action="submit.html" method="get" id="form">
+<table align="center" cellpadding="6" style="background-color:Teal" border="4" cellspacing="0px">
+<tr><td align="center" colspan="4"><h1>APPOINTMENT FORM</h1></td></tr>
+<tr>
+<td><label>PATIENT NAME:</label></td>
+<td><input type="text" name="uname" id="uname"></td><br>
+<td><span id="error"></span></td><br><br>
+</tr>
+<tr>
+<td><label>EMAIL:</label></td>
+<td><input type="text" name="mail" id="email"></td><br><br>
+<td><span id="merror"></span></td>
+</tr>
+<tr>
+<td><label>PHONE NUMBER:</label></td>
+<td><input type="tel" name="number" id="no" size="10" minlength="1" maxlength="10"></td><br>
+<td><span id="terror"></span></td><br><br>
+</tr>
+<tr>
+<td>Date of Appointment</td>
+<td>
+<select name="appointment" id="appointment_Day">
+<option value="-1">Day:</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+</select>
+<select name="AppointmentMonth" id="Appointment_Month">
+<option value="-1">Month:</option>
+<option value="January">Jan(1)</option>
+<option value="February">Feb(2)</option>
+<option value="March">Mar(3)</option>
+<option value="April">Apr(4)</option>
+<option value="May">May(5)</option>
+<option value="June">Jun(6)</option>
+<option value="July">Jul(7)</option>
+<option value="August">Aug(8)</option>
+<option value="September">Sep(9)</option>
+<option value="October">Oct(10)</option>
+<option value="November">Nov(11)</option>
+<option value="December">Dec(12)</option>
+</select>
+<select name="AppointmentYear" id="Appointment_Year">
+<option value="-1">Year:</option>
+<option value="2023">2023</option>
+<option value="2024">2024</option>
+<option value="2025">2025</option>
+<option value="2026">2026</option>
+</select>
+</td>
+</tr>
+<tr>
+<td><label> I accept the <u>Terms and Conditions</u></label></td><br>
+<td><input type="checkbox" name="checked" id="check"></td>
+<td><span id="checkerror"></span></td><br><br>
+</tr>
+<tr>
+<td><label>DOCTOR NAME:</label></td>
+<td><input type="text" name="uname" id="uname"></td><br>
+<td><span id="error"></span></td><br><br>
+</tr>
+<tr>
+<td><label>ADDRESS</td>
+<td><textarea rows="5" cols="7"></textarea></td>
+</tr>
+<tr>
+<td colspan="5" align="center"/>
+<input type="submit" value="submit"/>
+<input type="reset" value="reset"/>
+</td>
+</tr>
+</table>
+</form>
+    <script>
+        let form=document.getElementById('form');
+
+        let uname=document.getElementById('uname');
+        let utel=document.getElementById('no');
+        let umail=document.getElementById('email');
+        let ucheck=document.getElementById('check');
+
+        let uerror=document.getElementById('error');
+        let terror2=document.getElementById('terror');
+        let merror2=document.getElementById('merror');
+        let checkerror2=document.getElementById('checkerror');
+
+        form.addEventListener("submit",event=>{event.preventDefault();validate();})
+        function validate(){
+
+            let name=uname.value.trim();
+            let telph=utel.value.trim();
+            let em=umail.value.trim();
+
+            if(name===""||name==null){
+                uerror.innerText="cant be empty";
+            }
+             else if(name.length<3){
+                uerror.innerText="must be conatin 3 letters";
+                }
+           else if(!isNaN(name)){
+                uerror.innerText="only alphabets";
+            }
+            else if(telph===""||telph==null){
+                terror2.innerText="telphone cant be empty";
+            }
+            else if(!telph.match(/[6-9][0-9]{9}/)){
+                terror2.innerText="invalid number";
+            }
+            else if(em===""||em==null){
+                merror2.innerText="email cant be empty";
+            }
+            else if(!(em.match(/^[a-zA-Z0-9_/.-]+@[a-zA-Z0-9_-]+(?:\.[a-z]{2,6})$/))){
+                merror2.innerText="invalid mail";
+            }
+            else if(ucheck.checked === false){
+                checkerror2.innerText="Please accept the terms and conditions";
+            }
+            else{
+       	        form.submit();
+       	    }
+        } 
+        function naren(){
+            if(upass.type=="password"){
+                upass.type="text";
+            }
+            else{
+                upass.type="password";
+            }
+        }     
+    </script>
+</body>
+</html>

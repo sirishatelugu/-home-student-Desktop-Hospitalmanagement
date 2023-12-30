@@ -1,100 +1,76 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
-<title>Hospital Management System</title>
-<link rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
-<style>
-.nav-link{
-    margin-left:1000px;
-}
-.cl{
-    background-color:green;
-}
-.search-bar{
-    margin-left:100px;
-}
-.body{
-    background-image:url('https://www.wallpapertip.com/wmimgs/99-998859_background-image-for-hospital.jpg');
-    background-size:cover;
-    backdrop-filter:blur(5px);
-}
-</style>
-</head>
-<body class="body">
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  <!-- Brand -->
-  <a class="navbar-brand" href="#">rainbows Hospital</a>
-
-</nav>    
-    <div class ="container">
-        <div class = "row">
-            
-            <h1>Doctors Details </h1>
-        </div>
-            <div class = "row">
-                <div class = "col-9">
-                    <a th:href = "@{/doctors/new}" class = "btn btn-primary btn-sm mb-3"> Add Doctor</a>
-                </div>
-                <div class="col-">
-                    <form action="/details" method="get">
-                        <input type="search" placeholder="Search by ID" id="entityId" name="id" required>
-                        <button type="submit"><img src="https://vectorified.com/images/search-icon-transparent-13.png" height="20px"></button>
-                    </form>
-                </div>
+<html>
+    <head>
+        <style>
+            img{
+                margin-left:20px;
+                height:300px;
+                width:500px;
+            }
+            .places{
+                display: grid;
+                grid-template-rows: auto auto;
+            }
+            .place{
+                background-color:cornsilk;
+                
+                margin:20px 50px;
+            }
+            .para{
+                padding-left:20px;
+                padding-right:20px;
+                text-align: justify;
+            }
+            body{
+                background-color:burlywood;
+            }
+            h1{
+               padding-left:20px;
+               font-size:40px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="places">
+            <div class="place" border="2x blue solid">
+                <h1>Dr. Omkar Nath Bhakoo</h1>
+                <img class="images" src="pedia.jpeg">
+                <p class="para">Pioneer of many academic courses and advanced medical techniques in the field of pediatrics. Specializes in routine medical care and vaccination schedule of new born babies. Has extensive experience in managing health of new born babies. </p>
             </div>
-                
-        <table class = "table table-striped table-bordered">
-            <thead class = "cl">
-                <tr>
-                    <th> Doctor Id</th>
-                    <th> Doctor Name</th>
-                    <th>Age </th>
-            
-                    <th> Gender</th>
-                    <th>Contact number</th>
-                    <th>Address </th>
-                    <th>Specialization </th>
-                    <th>Room no </th>
-                    <th>Actions </th>
-                </tr>
-            </thead>
-            
-            <tbody>
-                <tr th:each = "doctor: ${doctors}">
-                    <td th:text = "${doctor.id}"></td>
-                    <td th:text = "${doctor.firstName}"></td>
-                    <td th:text = "${doctor.age}"></td>
-                    <td th:text = "${doctor.gender}"></td>
-                    <td th:text = "${doctor.mobileno}"></td>
-                    <td th:text = "${doctor.address}"></td>
-                    <td th:text = "${doctor.specialization}"></td>
-                    <td th:text = "${doctor.roomno}"></td>
-                
-                        <td>
-                        <a th:href = "@{/doctors/edit/{id} (id=${doctor.id})}"
-                         class = "btn btn-primary">Update</a>
-                         <a th:href = "@{/doctors/{id} (id=${doctor.id})}"
-                         class = "btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-                         
-                    </td>
-                </tr>
-                    </td>
-                </tr>
-                
-            </tbody>
-        
-        </table>
-        
-    </div>
-        <!-- Example using JavaScript and Fetch API -->
+            <div class="place">
+                <h1>Dr. Mukul Varma</h1>
+                <img class="images" src="pedia1.jpeg">
+                <p class="para" >Dr. Mukul Varma has over 28 years of expertise as a Neurologist. He is also interested in mobility problems, multiple sclerosis, and headache treatment. Moreover, in 2004, Dr. Mukul Varma obtained specialized training and courses in the United States on mobility issues..</p>
+            </div>
+            <div class="place" border="2x blue solid">
+                <h1>Dr. Rashid Merchant</h1>
+                <img class="images" src="pedia3.jpeg">
+                <p class="para">He is highly skilled in areas like HIV/AIDs, Thalassemia and cases of Primary Immune Deficiency. He has many publications and research papers on his name.</p>
+            </div>
+            <div class="place" border="2x blue solid">
+                <h1>Dr. Shanti Talwar</h1>
+                <img class="images" src="pedia4.jpeg">
+                <p class="para">She is highly qualified pediatric surgeon. Her areas of interest include management of neonatal intestinal obstruction and various types of neonatal surgery.</p>
+            </div>
+            <div class="place" border="2x blue solid">
+                <h1>Dr. Rajiv Anand</h1>
+                <img class="images" src="neuro6.webp">
+                <p class="para">Dr. Rajiv Anand is a well-known neurologist in New Delhi. Furthermore, he has 36 years of experience and has studied at some of India’s most prestigious institutions of higher learning.
 
+Dr. Anand also received his MBBS and MD (Neurology) degrees from Delhi’s prestigious GB Pant Hospital. In addition, he also holds a medical degree from the prestigious Delhi University</p>
+            </div>
+            <div class="place" border="2x blue solid">
+                <h1>Dr. Puneet Agarwal</h1>
+                <img class="images" src="neuro7.webp">
+                <p class="para">Dr. Puneet Agarwal has 22 years of expertise as a Neurologist. In North India as well as at Max Hospital, he was the first to use Sonothrombolysis to patients suffering from severe stroke. He is one of India’s first doctors to study Inflammatory Genes in Stroke Patients and IV Valproate in Status Epilepticus. Meanwhile, he enjoys teaching and has been appointed as a thesis guide to PhD students at IIT Delhi working on Brain Wave Signal Processing in a variety of brain illnesses. He also serves as a mentor for DM (Neurology) and MD (Medicine) students working on their theses and research projects. Furthermore, the publishing of his biography in WHO’S WHO IN THE WORLD 2006 book, New Jersey, USA, added to hi</p>
+            </div>
+            <div class="place" border="2x blue solid">
+                <h1>Dr. Abhaya Kumar</h1>
+                <img class="images" src="neuro8.webp">
+                <p class="para">Dr. Abhaya Kumar is a well-known neurosurgeon with more than 16 years of expertise. Dr. Kumar earned his MBBS from India’s famed Bangalore University and his DNB from the well-known National Board of Examinations in New Delhi. Meanwhile, the Royal College of Surgeons of Edinburgh conferred on him the prestigious FRCS in General Surgery.
 
-
-</body>
+In addition, he has a number of national and international publications to his name and he is frequently invited to lecture on brain tumour surgery at scientific meetings, CMEs and also in conferences throughout the world. In addition, he successfully managed approximately 5000 patients, 2200 of whom were spine cases and 2800 of whom were brain cases. Furthermore, he is one of the few neurosurgeons who is skilled in both brain and spine cases and he has also performed over 1570 Minimal Invasive spine procedures successfully..</p>
+            </div>
+        </div>
+    </body>
 </html>

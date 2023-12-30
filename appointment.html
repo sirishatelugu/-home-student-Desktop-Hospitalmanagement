@@ -1,70 +1,190 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Hospital Management System</title>
-<link rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
+<title> APPOINTMENT Form </title>
+<script>
+    function myfun(){
+                var cancel=document.getElementById("hid1");
+                cancel.value="";
+                var cancel=document.getElementById("hid2");
+                cancel.value="";
+                var cancel=document.getElementById("hid3");
+                cancel.value="";
+                var cancel=document.getElementById("hid4");
+                cancel.value="";
+                var cancel1=document.getElementById("hid5");
+                cancel1.value="";
+                var cancel1=document.getElementById("hid6");
+                cancel1.value="";
+                var cancel1=document.getElementById("hid7");
+                cancel1.value="";
+    }
+</script>
+<style> 
+body {
+background-color: #F2F3EB;
+}
+</style>
 <style>
-.nav-link{
-    margin-left:1000px;
+   
+h2{
+ font-family: Sans-serif; 
+ font-size: 24px;     
+ font-style: normal; 
+ font-weight: bold; 
+ color: black;
+ text-align: center; 
 }
-.cl{
-    background-color:green;
+table{
+ font-family: verdana; 
+ color:white; 
+ font-size: 16px; 
+ font-style: normal;
+ font-weight: bold;
+ background: linear-gradient(to bottom, #808080	 0%, #ff99cc 100%);  
+ border-collapse: collapse; 
+ border: 4px solid #000000;
+
+  
 }
-.search-bar{
-    margin-left:100px;
+table.inner{
+ border: 10px
 }
-.body{
-    background-image:url('https://www.wallpapertip.com/wmimgs/99-998859_background-image-for-hospital.jpg');
-    background-size:cover;
-    backdrop-filter:blur(5px);
+input[type=text], input[type=email], input[type=number]{
+ width: 50%;
+ padding: 6px 12px;
+ margin: 5px 0;
+ box-sizing: border-box;
+}
+button{
+ width: 20%;
+ padding: 8px 20px;
+ margin: 5px 0;
+ background-color: #4fe43e;
+ border:2px black solid;
+ font-weight: bold;
+font-size: medium;
+}
+a:hover{
+    opacity: 0.8;
+
+}
+a{
+    box-sizing: border-box;
+    background-color: #4fe43e;
+    border:2px black solid;
+    padding:8px 20px;
+    text-decoration:none ;
+    color: black;
+}
+button:hover{
+    opacity: 0.8;
 }
 </style>
 </head>
-<body class="body">
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  <!-- Brand -->
-  <a class="navbar-brand" href="#">rainbows Hospital</a>
-</nav>    
-    <div class ="container">
-        <div class = "row">
-            
-            <h1>Appointment Details </h1>
-        </div>
-            
-                
-        <table class="table table-striped table-bordered">
-            <thead class="cl">
-                <tr>
-                    <th> Appointment Id</th>
-                    <th> Patient Name</th>
-                    <th> Doctor Name</th>
-                    <th> Appointment Date</th>
-                    <th> Appointment Time</th>
-                    <th> Department</th>
-                   
-                
-                </tr>
-            </thead>
-            
-            <tbody>
-                <tr th:each="appointment: ${appointments}">
-                    <td th:text="${appointment.id}"></td>
-                    <td th:text="${appointment.patientName}"></td>
-                    <td th:text="${appointment.doctorName}"></td>
-                    <td th:text="${appointment.appointmentDate}"></td>
-                    <td th:text="${appointment.appointmentTime}"></td>
-                    <td th:text="${appointment.department}"></td>
-                
-                
-                    
-       
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<body>
+    <table align="center" cellpadding = "10">
+<tr>
+    <td colspan="2">
+        <h2> APPOINTMENT FORM </h3>
+           
+    </td>   
+</tr>
+<tr>
+<td>Patient Name</td>
+<td><input id="hid1" type="text" name="FirstName" maxlength="50" placeholder="Eg:john" /></td>
+</tr>
+<tr>
+    <td>Email ID</td>
+    <td><input id="hid2" type="email" name="EmailID" maxlength="100" placeholder="Eg:example@gmail.com"/></td>
+    </tr>
+    
+    
+    <tr>
+    <td>Mobile Number</td>
+    <td>
+    <input id="hid3" type="text" name="MobileNumber" maxlength="10" placeholder="91*******0"/>
+    (10 Digits Allowed)
+    </td>
+    </tr>
+<td>Date of Appointment</td>
+<td>
+<select name="BirthDay" id="Birthday_Day">
+<option value="-1">Day:</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+</select>
+<select name="BirthdayMonth" id="Birthday_Month">
+<option value="-1">Month:</option>
+<option value="January">Jan(1)</option>
+<option value="February">Feb(2)</option>
+<option value="March">Mar(3)</option>
+<option value="April">Apr(4)</option>
+<option value="May">May(5)</option>
+<option value="June">Jun(6)</option>
+<option value="July">Jul(7)</option>
+<option value="August">Aug(8)</option>
+<option value="September">Sep(9)</option>
+<option value="October">Oct(10)</option>
+<option value="November">Nov(11)</option>
+<option value="December">Dec(12)</option>
+</select>
+<select name="BirthdayYear" id="Birthday_Year">
+<option value="-1">Year:</option>
+<option value="2023">2023</option>
+<option value="2024">2024</option>
+<option value="2025">2025</option>
+<option value="2026">2026</option>
+</select>
+</td>
+</tr>
+<tr>
+    <td>No of Hours</td>
+    <td><input id="hid4" type="number" name="Username"  /></td>
+</tr>
+
+
+<tr>
+<td>Doctor Name</td>
+<td><input id="hid6" type="text" name="firstname" maxlength="50" />
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<a href="payment.html">Confirm</a>
+<button type="button" class="btn" id="bt" onclick="myfun()">RESET</button>
+</td>
+</tr>
+
+</table>
+</form>
 </body>
 </html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Appointment Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #addAppointmentForm {
+            width: 80%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Doctor Appointment Form</h1>
+
+    <!-- Form for adding appointments -->
+    <form id="addAppointmentForm">
+        <label for="doctorName">Doctor Name:</label>
+        <input type="text" id="doctorName" required>
+        <label for="date">Date:</label>
+        <input type="text" id="date" placeholder="YYYY-MM-DD" required>
+        <label for="time">Time:</label>
+        <input type="text" id="time" placeholder="HH:MM AM/PM" required>
+        <label for="clientName">Client Name:</label>
+        <input type="text" id="clientName" required>
+        <button type="button" onclick="addAppointment()">Add Appointment</button>
+    </form>
+
+    <script>
+        // Dummy data for demonstration
+        let appointments = [
+            { doctorName: 'Dr. Smith', date: '2023-12-15', time: '10:00 AM' },
+            { doctorName: 'Dr. Johnson', date: '2023-12-15', time: '11:00 AM' },
+            // Add more dummy data as needed
+        ];
+
+        // Dummy data for doctor working hours
+        let doctorWorkingHours = {
+            'Dr. Smith': { start: '09:00 AM', end: '05:00 PM' },
+            'Dr. Johnson': { start: '10:00 AM', end: '06:00 PM' },
+            // Add more doctors and working hours as needed
+        };
+
+        // Function to add a new appointment
+        function addAppointment() {
+            const doctorNameInput = document.getElementById('doctorName');
+            const dateInput = document.getElementById('date');
+            const timeInput = document.getElementById('time');
+            const clientNameInput = document.getElementById('clientName');
+
+            // Get values from the inputs
+            const doctorName = doctorNameInput.value;
+            const date = dateInput.value;
+            const time = timeInput.value;
+            const clientName = clientNameInput.value;
+
+            // Validate selected date and time
+            const selectedDateTime = new Date(`${date} ${time}`);
+            const currentDateTime = new Date();
+
+            if (selectedDateTime <= currentDateTime) {
+                alert('Please select a future date and time.');
+                return;
+            }
+
+            // Check doctor availability
+            if (!isDoctorAvailable(doctorName, selectedDateTime)) {
+                alert('Sorry, the doctor is not available at the selected time.');
+                return;
+            }
+
+            // Add the new appointment to the array
+            appointments.push({ doctorName, date, time, clientName });
+	    console.log(appointments);
+
+            // Clear the input fields
+            doctorNameInput.value = '';
+            dateInput.value = '';
+            timeInput.value = '';
+            clientNameInput.value = '';
+
+            // Inform the user about successful appointment addition
+            alert('Appointment added successfully!');
+        }
+
+        // Function to check if a given time slot is available for a specific doctor
+        function isDoctorAvailable(doctorName, selectedDateTime) {
+            // Check if the selected time falls within the doctor's working hours
+            const workingHours = doctorWorkingHours[doctorName];
+            if (!workingHours) {
+                return false; // Doctor not found or working hours not defined
+            }
+
+            const startTime = new Date(`${selectedDateTime.toDateString()} ${workingHours.start}`);
+            const endTime = new Date(`${selectedDateTime.toDateString()} ${workingHours.end}`);
+
+            if (selectedDateTime < startTime || selectedDateTime >= endTime) {
+                return false; // Selected time is outside working hours
+            }
+
+            // Check if the selected time slot is already booked
+            const conflictingAppointments = appointments.filter(appointment =>
+                appointment.doctorName === doctorName &&
+                new Date(`${appointment.date} ${appointment.time}`) >= startTime &&
+                new Date(`${appointment.date} ${appointment.time}`) < endTime
+            );
+
+            return conflictingAppointments.length === 0;
+        }
+	
+    </script>
+
+</body>
+</html>
+

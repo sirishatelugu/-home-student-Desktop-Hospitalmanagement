@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Hospital Management System</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <style>
+        .nav-link {
+            margin-left: 1000px;
+        }
+
+        body {
+            background-image: url('http://cdn.wallpapersafari.com/87/15/V6z0Eb.jpg');
+            background-size: cover;
+            backdrop-filter: blur(5px);
+        }
+
+        .container {
+            background-image: transparent;
+        }
+
+        .search-bar {
+            margin-left: 100px;
+        }
+
+        .input-field {
+            width: 300px;
+            background: transparent;
+            border-color: blue;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Rainbows Hospital</a>
+
+    <!-- Toggler/collapsible Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/staff}">Staff</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <h1 class="text-center"> Create New Staff </h1>
+
+    <form th:action="@{/staff}" th:object="${staff}" method="POST">
+        <div class="form-group">
+            <label>Staff ID </label>
+            <input
+                    type="text"
+                    name="id"
+                    class="form-control input-field"
+                    placeholder="Enter Staff Id"
+                    required
+            />
+        </div>
+
+        <div class="form-group">
+            <label> Staff Name </label>
+            <input
+                    type="text"
+                    name="firstName"
+                    class="form-control input-field"
+                    placeholder="Enter Staff Name"
+                    required
+            />
+        </div>
+
+        <div class="form-group">
+            <label> Staff Age </label>
+            <input
+                    type="number"
+                    name="age"
+                    class="form-control input-field"
+                    placeholder="Enter Staff age"
+                    required
+            />
+        </div>
+
+        <div>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" class="input-field">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label> Contact Details </label>
+            <input
+                    type="number"
+                    name="mobileno"
+                    class="form-control input-field"
+                    placeholder="Phone number"
+                    required
+            />
+        </div>
+        <div class="form-group">
+            <label>Address</label>
+            <input
+                    type="text"
+                    name="address"
+                    class="form-control input-field"
+                    placeholder="Address"
+                    required
+            />
+        </div>
+        <div class="form-group">
+            <label> Department </label>
+            <input
+                    type="text"
+                    name="department"
+                    class="form-control input-field"
+                    placeholder="Staff's Department"
+                    required
+            />
+        </div>
+        <div class="form-group">
+            <label>Room no</label>
+            <input
+                    type="number"
+                    name="roomno"
+                    class="form-control input-field"
+                    placeholder="Room no"
+                    required
+            />
+        </div>
+
+        <div class="box-footer">
+            <button type="submit" class="btn btn-primary">
+                Submit
+            </button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Categories</title>
+    <link rel="icon" href="1.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+		body{
+			margin: 45px;
+			margin: 0;
+            padding: 0;
+            background-image: url('https://cdn.wallpapersafari.com/36/61/uLj9Ck.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif; 
+		}
+        .card-container {
+            height: 320px;
+            width: 300px;
+            background: #b7b99e;
+			margin: 10px;
+        }
+	.btn{
+	background-color:lightgreen;
+}
+        .card-img {
+            height: 200px;
+            width: 300px;
+        }
+		see-all{
+			text-decoration-style: none;
+		}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card-container">
+                    <img src="https://thumbs.dreamstime.com/b/image-hospital-diagnostic-equipment-hospital-diagnostic-equipment-101625703.jpg" class="card-img" alt="Card Image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Diagnostic Equipment</h5>
+                        <button class="btn"><a href="/home/student/Desktop/majorproject/equipmentdetails.html">See All</a></button>
+                    </div>
+                </div>
+            </div>
+
+			<div class="col-md-4">
+                <div class="card-container">
+                    <img src="https://www.usms.biz/wp-content/uploads/GettyImages-818429968.jpg" class="card-img" alt="Card Image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Surgical Equipment</h5>
+                        <button class="btn btn-primary"><a href="/home/student/Desktop/majorproject/surgical.html">See All</a></button>
+                    </div>
+                </div>
+            </div>
+
+			<div class="col-md-4">
+                <div class="card-container">
+                    <img src="https://medinstrum.com/wp-content/uploads/2013/11/patient-monitoring.jpg" class="card-img" alt="Card Image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Patient Monitoring Equipment</h5>
+                        <button class="btn btn-primary"><a href="PatientMonitoring.html">See All</a></button>
+                    </div>
+                </div>
+            </div>
+
+			<div class="col-md-4">
+                <div class="card-container">
+                    <img src="https://www.strategicetc.com/wp-content/uploads/2020/06/iStock-862773270_3.jpg" class="card-img" alt="Card Image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Life Support Equipment</h5>
+                        <button class="btn btn-primary"><a href="Life.html">See All</a></button>
+                    </div>
+                </div>
+            </div>
+
+			<div class="col-md-4">
+                <div class="card-container">
+                    <img src="https://produktion2030.se/wp-content/uploads/Utlysning-Information-and-Communication-Technologies.jpg" class="card-img" alt="Card Image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Information Technology and Communication Systems</h5>
+                        <button class="btn btn-primary"><a href="information.html">See All</a></button>
+                    </div>
+                </div>
+            </div>
+
+			<div class="col-md-4">
+                <div class="card-container">
+                    <img src="http://krkrhealthcare.in/wp-content/uploads/2020/01/medical-furni-1024x516.jpg" class="card-img" alt="Card Image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Hospital Furniture</h5>
+                        <button class="btn btn-primary"><a href="hospital_furniture.html">See All</a></button>
+                    </div>
+                </div>
+            </div>
+
+			<div class="col-md-4">
+                <div class="card-container">
+                    <img src="https://1call.com/sites/default/files/2020-12/Efficient-Hospital-Communications-Steps-for-Automating-Streamlining-and-Improving-Healthcare-Communications.png" class="card-img" alt="Card Image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">communication Equipment</h5>
+                        <button class="btn btn-primary"><a href="information.html">See All</a></button>
+                    </div>
+                </div>
+            </div>
+
+			<div class="col-md-4">
+                <div class="card-container">
+                    <img src="https://www.pinnaclesupplies.org/wp-content/uploads/2019/08/Lab-Equipments.png" class="card-img" alt="Card Image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Laboratory Equipment</h5>
+                        <button class="btn btn-primary"><a href="lab.html">See All</a></button>
+                    </div>
+                </div>
+            </div>
+
+			<div class="col-md-4">
+                <div class="card-container">
+                    <img src="https://newicon.fi/media/emed_icon_newicon_kys_pharmacy_automation_10.jpg" class="card-img" alt="Card Image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Pharmacy Equipment</h5>
+                        <button class="btn btn-primary"><a href="pharmacy.html">See All</a></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Generate a random number between 0 and 200
+        var randomOxygens = Math.floor(Math.random() * 201);
+
+        // Display the random number in the paragraph
+        document.getElementById("randomOxygens").innerText = randomOxygens;
+    </script>
+</body>
+</html>

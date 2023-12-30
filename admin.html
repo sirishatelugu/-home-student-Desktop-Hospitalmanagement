@@ -1,0 +1,79 @@
+<!-- Admin Display Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Doctor Appointment Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #appointmentDetails {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        #appointmentDetails th, #appointmentDetails td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #appointmentDetails th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Admin - Doctor Appointment Details</h1>
+
+    <table id="appointmentDetails">
+        <thead>
+            <tr>
+                <th>Doctor Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Client Name</th>
+            </tr>
+        </thead>
+        <tbody id="appointmentTableBody">
+            <!-- Appointment details will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Function to display appointment details for admin
+        function displayAdminAppointments() {
+            const tableBody = document.getElementById('appointmentTableBody');
+
+            // Clear existing rows
+            tableBody.innerHTML = '';
+
+            // Populate table with appointment details
+            appointments.forEach(appointment => {
+                const row = tableBody.insertRow();
+                row.insertCell(0).textContent = appointment.doctorName;
+                row.insertCell(1).textContent = appointment.date;
+                row.insertCell(2).textContent = appointment.time;
+                row.insertCell(3).textContent = appointment.clientName;
+            });
+        }
+
+        // Call the displayAdminAppointments function to initially populate the table
+        displayAdminAppointments();
+    </script>
+
+</body>
+</html>
+
+
+

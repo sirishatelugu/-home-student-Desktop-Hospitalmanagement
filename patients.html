@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Hospital Management System</title>
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+<style>
+.nav-link{
+    margin-left:1000px;
+}
+.cl{
+    background-color:green;
+}
+.search-bar{
+    margin-left:100px;
+}
+.body{
+    background-image:url('https://www.wallpapertip.com/wmimgs/99-998859_background-image-for-hospital.jpg');
+    background-size:cover;
+    backdrop-filter:blur(5px);
+}
+</style>
+</head>
+<body class="body">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">rainbows Hospital</a>
+</nav>    
+    <div class ="container">
+        <div class = "row">
+            
+            <h1>Patients Details </h1>
+        </div>
+            <div class = "row">
+                <div class = "col-9">
+                    <a th:href="@{/patients/new}" class="btn btn-primary btn-sm mb-3"> Add Patient</a>
+                </div>
+                <div class="col-">
+                    <form action="/patientdetails" method="get">
+                        <input type="search" placeholder="Search by ID" id="entityId" name="id" required>
+                        <button type="submit"><img src="https://vectorified.com/images/search-icon-transparent-13.png" height="20px"></button>
+                    </form>
+                </div>
+            </div>
+                
+        <table class="table table-striped table-bordered">
+            <thead class="cl">
+                <tr>
+                    <th> Patient Id</th>
+                    <th> Patient Name</th>
+                    <th>Age </th>
+                    <th> Gender</th>
+                    <th>Contact number</th>
+                    <th>Address </th>
+                    <th>Health Issue </th>
+                    <th>Room no </th>
+                    <th>Actions </th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr th:each="patient: ${patients}">
+                    <td th:text="${patient.id}"></td>
+                    <td th:text="${patient.firstName}"></td>
+                    <td th:text="${patient.age}"></td>
+                    <td th:text="${patient.gender}"></td>
+                    <td th:text="${patient.mobileno}"></td>
+                    <td th:text="${patient.address}"></td>
+                    <td th:text="${patient.healthIssue}"></td>
+                    <td th:text="${patient.roomno}"></td>
+                
+                        <td>
+                        <a th:href="@{/patients/edit/{id} (id=${patient.id})}"
+                         class="btn btn-primary">Update</a>
+                         <a th:href="@{/patients/{id} (id=${patient.id})}"
+                         class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

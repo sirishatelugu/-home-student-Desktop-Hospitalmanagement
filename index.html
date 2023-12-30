@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Inventory</title>
+    <style>
+        .body {
+            width: 100%;
+	margin: 0;
+            padding: 0;
+            background-image: url('http://wallpapercave.com/wp/wp1813040.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin-left: 200px;
+            margin-right: 200px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 0px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .main-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+
+        .form-container{
+            display: flex;
+            justify-content: space-evenly;
+            margin: 20px;
+
+            color: #fff;
+        }
+        .button-container{
+            display: flex;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .input-field{
+            width: 200px;
+            height: 40px;
+            background: transparent;
+            border-radius: 20px;
+            border-width: 1px;
+            border-color: black;
+        }
+        .input-field1{
+            width: 400px;
+            height: 40px;
+            background: transparent;
+            border-radius: 10px;
+            border-width: 1px;
+            border-color: black;
+        }
+        button{
+            width: 100px;
+            height: 35px;
+            background: transparent;
+            margin: 10px;
+            border-radius: 8px;
+            border-color: black;
+            
+        }
+    </style>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body class="body">
+<div class="main-container">
+    <h1>Medicine Inventory</h1>
+    <div>
+        <input class="input-field" type="text" id="searchInput" placeholder="Enter medicine name">
+        <button onclick="searchMedicine()">Search</button>
+    </div>
+</div>
+
+<div>
+    <form id="addMedicineForm">
+        <div class="form-container">
+            <input class="input-field1" type="text" id="medicineName" placeholder="Enter medicine name" required>
+            <input class="input-field1" type="number" id="medicineQuantity" placeholder="Quantity" required>
+        </div>
+        <div class="button-container">
+            <button type="button" onclick="addMedicine()">Add Medicine</button>
+            <button><a href="homepage.html">Back</a></button>
+        </div>
+    </form>
+</div>
+<table class="container">
+    <thead>
+    <tr>
+        <th>Medicine Name</th>
+        <th>Quantity</th>
+    </tr>
+    </thead>
+    <tbody id="medicineTableBody">
+    <!-- Medicine data will be displayed here -->
+    </tbody>
+</table>
+
+<!-- Form for Admin to Add Medicine -->
+
+
+<!-- ... (previous HTML code) ... -->
+
+<script>
+    // Function to update the table with medicine data
+    function updateTable(data) {
+        const tableBody = $("#medicineTableBody");
+        tableBody.empty();
+
+        data.forEach(medicine => {
+            const row = $("<tr>");
+            const nameCell = $("<td>").text(medicine.name);
+            const quantityCell = $("<td>").text(medicine.quantity);
+
+            row.append(nameCell, quantityCell);
+            tableBody.append(row);
+        });
+    }
+
+    // Function to fetch updated data from the server or local storage
+    function fetchUpdatedData() {
+        // Check if there is data in local storage
+        const storedMedicines = localStorage.getItem('medicines');
+
+        if (storedMedicines) {
+            // Parse and use the stored data
+            medicines = JSON.parse(storedMedicines);
+        } else {
+            // Use the default data
+            medicines = [
+                {name: "Aspirin ", quantity: 50},
+                {name: "Sertraline ", quantity: 75},
+                // ... (rest of the medicine data)
+            ];
+        }
+
+        // Simulate updating quantities randomly
+        medicines.forEach(medicine => {
+            medicine.quantity = Math.floor(Math.random() * 100) + 1;
+        });
+
+        // Save the updated data to local storage
+        localStorage.setItem('medicines', JSON.stringify(medicines));
+
+        // Update the table
+        updateTable(medicines);
+    }
+
+    // Initial table update
+    fetchUpdatedData();
+
+    // Function to perform the medicine search
+    function searchMedicine() {
+        const searchQuery = $("#searchInput").val().toLowerCase();
+        const searchResults = medicines.filter(medicine => medicine.name.toLowerCase().includes(searchQuery));
+        updateTable(searchResults);
+    }
+
+    // Function to add a new medicine
+    function addMedicine() {
+        const newMedicineName = $("#medicineName").val();
+        const newMedicineQuantity = parseInt($("#medicineQuantity").val());
+
+        // Validate input
+        if (!newMedicineName || isNaN(newMedicineQuantity)) {
+            alert("Please enter valid values for medicine name and quantity.");
+            return;
+        }
+
+        // Add the new medicine to the array
+        medicines.push({name: newMedicineName, quantity: newMedicineQuantity});
+
+        // Save the updated data to local storage
+        localStorage.setItem('medicines', JSON.stringify(medicines));
+
+        // Update the table
+        updateTable(medicines);
+
+        // Clear the form fields
+        $("#medicineName").val("");
+        $("#medicineQuantity").val("");
+    }
+
+    // Automatically fetch updated data every 5 seconds
+    setInterval(fetchUpdatedData, 50000);
+</script>
+
+<!-- ... (remaining HTML code) ... -->
+
+</body>
+</html>
+
+

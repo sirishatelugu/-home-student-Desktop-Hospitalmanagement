@@ -1,0 +1,99 @@
+<!-- details.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details Page</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('https://cdn.wallpapersafari.com/44/27/S0a4Ag.jpg');
+            background-size: cover;
+            backdrop-filter: blur(5px);
+        }
+
+        .bo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .center-container {
+            text-align: center;
+        }
+
+        .nav-link {
+            margin-left: 1000px;
+        }
+
+        .table {
+            margin-left: 0;
+        }
+
+        .search-bar {
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Rainbows Hospital</a>
+
+    <!-- Toggler/collapsible Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/staff}">Staff</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="bo">
+    <div class="center-container">
+        <h1>Details of staff Id:<span th:text="${entity.id}"></span></h1>
+        <div class="center">
+            <table class="table">
+                <tr>
+                    <th th:if="${entity != null}">Staff ID:</th><th><span th:text="${entity.id}"></span></th>
+                </tr>
+
+                <tr>
+                    <th th:if="${entity != null}">Staff Name:</th><th><span th:text="${entity.firstName}"></span></th>
+                </tr>
+                <tr>
+                    <tr>
+                        <th th:if="${entity != null}">Age:</th><th><span th:text="${entity.age}"></span></th>
+                    </tr>
+                <tr>
+                    <th th:if="${entity != null}">Gender:</th><th><span th:text="${entity.gender}"></span></th>
+                </tr>
+                <tr>
+                    <th th:if="${entity != null}">Address:</th><th><span th:text="${entity.address}"></span></th>
+                </tr>
+                <tr>
+                    <th th:if="${entity != null}">Mobile No:</th><th><span th:text="${entity.mobileno}"></span></th>
+                </tr>
+                <tr>
+                    <th th:if="${entity != null}">Department:</th><th><span th:text="${entity.department}"></span></th>
+                </tr>
+                <tr>
+                    <th th:if="${entity != null}">Room no:</th><th><span th:text="${entity.roomno}"></span></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

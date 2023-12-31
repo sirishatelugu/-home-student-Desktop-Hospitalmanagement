@@ -1,28 +1,28 @@
 package com.lifecare.Lifecare.controller;
-import com.lifecare.Lifecare.repository.AppointmentRepository; // Replace StaffRepository with AppointmentRepository
+import com.lifecare.Lifecare.repository.AppointmentRepository; 
 import org.apache.catalina.connector.Response;
-import org.hibernate.mapping.List;
+import org.hibernate.mapping.List;AppointmentRepository
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import com.lifecare.Lifecare.entity.Appointment; // Replace Staff with Appointment
-import com.lifecare.Lifecare.service.AppointmentService; // Replace StaffService with AppointmentService
+import com.lifecare.Lifecare.entity.Appointment; 
+import com.lifecare.Lifecare.service.AppointmentService; 
 
 @Controller
-public class AppointmentController { // Replace StaffController with AppointmentController
-    private AppointmentService appointmentService; // Replace StaffService with AppointmentService
+public class AppointmentController { 
+    private AppointmentService appointmentService; 
 
     @Autowired
-    public AppointmentController(AppointmentService appointmentService) { // Replace StaffController with AppointmentController, StaffService with AppointmentService
+    public AppointmentController(AppointmentService appointmentService) { 
         super();
-        this.appointmentService = appointmentService; // Replace staffService with appointmentService
+        this.appointmentService = appointmentService; 
     }
 
-    @GetMapping("/appointment") // Replace staff with appointment
-    public String listAppointments(Model model) { // Replace listStaff with listAppointments
-        model.addAttribute("appointments", appointmentService.getAllAppointments()); // Replace staff with appointment
-        return "appointment"; // Replace staff with appointment
+    @GetMapping("/appointment")
+    public String listAppointments(Model model) { 
+        model.addAttribute("appointments", appointmentService.getAllAppointments()); 
+        return "appointment"; 
     }
 }

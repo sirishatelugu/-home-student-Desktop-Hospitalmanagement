@@ -93,8 +93,6 @@ public class Appointment {
 		this.department = department;
 	}
 
-    // Getters and Setters (excluding roomNo)
-
-    // Omit the getter and setter for roomNo since it's removed
+   
 }
 

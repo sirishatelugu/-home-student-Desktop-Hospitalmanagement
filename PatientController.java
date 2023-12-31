@@ -1,5 +1,5 @@
 package com.lifecare.Lifecare.controller;
-import com.lifecare.Lifecare.repository.PatientRepository; // Replace DoctorRepository with PatientRepository
+import com.lifecare.Lifecare.repository.PatientRepository; 
 import org.apache.catalina.connector.Response;
 import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,46 +7,46 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import com.lifecare.Lifecare.entity.Patient; // Replace Doctor with Patient
-import com.lifecare.Lifecare.service.PatientService; // Replace DoctorService with PatientService
+import com.lifecare.Lifecare.entity.Patient; 
+import com.lifecare.Lifecare.service.PatientService; 
 
 @Controller
-public class PatientController { // Replace DoctorController with PatientController
-    private PatientService patientService; // Replace DoctorService with PatientService
+public class PatientController { 
+    private PatientService patientService; 
 
     @Autowired
-    public PatientController(PatientService patientService) { // Replace DoctorController with PatientController, DoctorService with PatientService
+    public PatientController(PatientService patientService) { 
         super();
-        this.patientService = patientService; // Replace doctorService with patientService
+        this.patientService = patientService; 
     }
 
-    @GetMapping("/patients") // Replace doctors with patients
-    public String listPatients(Model model) { // Replace listDoctors with listPatients
-        model.addAttribute("patients", patientService.getAllPatient()); // Replace doctors with patients
-        return "patients"; // Replace doctors with patients
+    @GetMapping("/patients") 
+    public String listPatients(Model model) { 
+        model.addAttribute("patients", patientService.getAllPatient()); 
+        return "patients"; 
     }
 
-    @GetMapping("/patients/new") // Replace doctors with patients
-    public String createPatient(Model model) { // Replace createDoctor with createPatient
+    @GetMapping("/patients/new") 
+    public String createPatient(Model model) { 
         // create patient object to hold patient form data
-        Patient patient = new Patient(); // Replace Doctor with Patient
-        model.addAttribute("patients", patient); // Replace doctors with patients
-        return "createpatient"; // Replace createdoctor with createpatient
+        Patient patient = new Patient(); 
+        model.addAttribute("patients", patient); 
+        return "createpatient";
     }
 
-    @PostMapping("/patients") // Replace doctors with patients
-    public String savePatient(@ModelAttribute("patient") Patient patient) { // Replace saveDoctor with savePatient, Doctor with Patient
-        patientService.savePatient(patient); // Replace doctorService with patientService
-        return "redirect:/patients"; // Replace doctors with patients
+    @PostMapping("/patients") 
+    public String savePatient(@ModelAttribute("patient") Patient patient) { 
+        patientService.savePatient(patient); 
+        return "redirect:/patients"; 
     }
 
-    @GetMapping("/patients/edit/{id}") // Replace doctors with patients
-    public String editPatientForm(@PathVariable Long id, Model model) { // Replace editDoctorForm with editPatientForm, Doctor with Patient
-        model.addAttribute("patient", patientService.getPatientById(id)); // Replace doctorService with patientService, Doctor with Patient
-        return "editpatient"; // Replace editdoctor with editpatient
+    @GetMapping("/patients/edit/{id}") 
+    public String editPatientForm(@PathVariable Long id, Model model) { 
+        model.addAttribute("patient", patientService.getPatientById(id)); 
+        return "editpatient"; 
     }
 
-    @PostMapping("/patients/{id}") // Replace doctors with patients
+    @PostMapping("/patients/{id}") 
     public String updatePatient(@PathVariable Long id,
                                 @ModelAttribute("patient") Patient patient,
                                 Model model) {
@@ -62,17 +62,17 @@ public class PatientController { // Replace DoctorController with PatientControl
 
         // save updated patient object
         patientService.updatePatient(existingPatient);
-        return "redirect:/patients"; // Replace doctors with patients
+        return "redirect:/patients"; 
     }
 
-    @GetMapping("/patients/{id}") // Replace doctors with patients
-    public String deletePatient(@PathVariable Long id) { // Replace deleteDoctor with deletePatient
-        patientService.deletePatientById(id); // Replace doctorService with patientService
-        return "redirect:/patients"; // Replace doctors with patients
+    @GetMapping("/patients/{id}") 
+    public String deletePatient(@PathVariable Long id) { 
+        patientService.deletePatientById(id);
+        return "redirect:/patients"; 
     }
 
     @Autowired
-    private PatientRepository patientRepository; // Replace DoctorRepository with PatientRepository
+    private PatientRepository patientRepository; 
 
     @GetMapping("/searchs")
     public String searchPage() {
@@ -81,7 +81,7 @@ public class PatientController { // Replace DoctorController with PatientControl
 
     @GetMapping("/patientdetails")
     public String detailsPage(@RequestParam Long id, Model model) {
-        Patient entity = patientRepository.findById(id).orElse(null); // Replace Doctor with Patient
+        Patient entity = patientRepository.findById(id).orElse(null);
         model.addAttribute("entity", entity);
         return "patientdetails";
     }

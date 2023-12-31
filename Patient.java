@@ -1,8 +1,8 @@
 package com.lifecare.Lifecare.entity;
 import jakarta.persistence.*;
 @Entity
-@Table(name = "patients") // Change "doctors" to "patients"
-public class Patient { // Change "Doctor" to "Patient"
+@Table(name = "patients") 
+public class Patient { 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +23,8 @@ public class Patient { // Change "Doctor" to "Patient"
     @Column(name = "Address")
     private String address;
 
-    @Column(name = "HealthIssue") // Change "Specialization" to "HealthIssue"
-    private String healthIssue; // Change "specialization" to "problem"
+    @Column(name = "HealthIssue") 
+    private String healthIssue; 
 
     @Column(name = "Room_No")
     private int roomno;

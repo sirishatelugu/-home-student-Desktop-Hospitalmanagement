@@ -3,15 +3,14 @@ package com.lifecare.Lifecare.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "staff") // Change "patients" to "staff"
-public class Staff { // Change "Patient" to "Staff"
+@Table(name = "staff")
+public class Staff { 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", nullable = false) // Change "first_name" to "name"
-    private String name; // Change "firstName" to "name"
+    @Column(name = "name", nullable = false) 
 
     @Column(name = "age")
     private int age;
@@ -19,17 +18,17 @@ public class Staff { // Change "Patient" to "Staff"
     @Column(name = "gender")
     private String gender;
 
-    @Column(name = "mobileno") // Change "contactnumber" to "mobileno"
-    private long mobileNo; // Change "mobileno" to "mobileNo"
+    @Column(name = "mobileno") 
+    private long mobileNo; 
 
     @Column(name = "address")
     private String address;
 
-    @Column(name = "department") // Change "HealthIssue" to "department"
-    private String department; // Change "healthIssue" to "department"
+    @Column(name = "department") 
+    private String department; 
 
-    @Column(name = "room_no") // Change "Room_No" to "room_no"
-    private int roomNo; // Change "roomno" to "roomNo"
+    @Column(name = "room_no") 
+    private int roomNo; 
 
     public Staff() {
 
